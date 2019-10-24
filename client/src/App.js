@@ -1,11 +1,13 @@
 import React from 'react';
-//import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AppNavbar from './components/AppNavbar';
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>Hello </header>
+      <AppNavbar />
+      <header className='App-header'>Hello 4</header>
     </div>
   );
 }
