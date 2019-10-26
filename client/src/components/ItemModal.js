@@ -11,6 +11,7 @@ import {
   Input
 } from 'reactstrap';
 import { addItem } from '../actions/itemActions';
+import uuid from 'uuid';
 
 class ItemModal extends Component {
   state = {
@@ -26,6 +27,20 @@ class ItemModal extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const newItem = {
+      id: uuid(),
+      name: this.state.name
+    };
+
+    //Add item via addItem action
+    this.props.addItem(newItem);
+
+    // close Modal
+    this.toggle();
   };
   render() {
     return (
@@ -51,7 +66,12 @@ class ItemModal extends Component {
                   placeholder='Add shopping list item'
                   onChange={this.onChange}
                 />
-                <Button color='success' style={{ marginTop: '2rem' }} block>
+                <Button
+                  type='submit'
+                  color='success'
+                  style={{ marginTop: '2rem' }}
+                  block
+                >
                   Add Item
                 </Button>
               </FormGroup>
